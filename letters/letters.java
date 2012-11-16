@@ -7,7 +7,7 @@ public class letters extends PApplet {
     float[][] noise_map;
 
     final float max_vel = 5;
-    final int num_particles = 100;
+    final int num_particles = 1;
 
     public void setup()
     {
@@ -46,9 +46,9 @@ public class letters extends PApplet {
     {
         for(Particle p : particles)
         {
-//            p.steer();
-//            p.move();
-//            p.render();
+            p.steer(noise_map[(int)p.pos.x][(int)p.pos.y]);
+            p.move();
+            p.render();
         }
     }
 
