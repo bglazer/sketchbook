@@ -21,11 +21,35 @@ public class Particle
     void move()
     {
         pos = PVector.add(pos, vel);
+        
+        //Bounds checking and roll over
+        
+        if(pos.x >= p.width-1)
+           pos = new PVector(0, pos.y);
+        else if(pos.x <= 0)
+           pos = new PVector(p.width-1, pos.y);
+        if(pos.y >= p.height-1)
+           pos = new PVector(pos.x, 0);
+        else if(pos.y <= 0)
+           pos = new PVector(pos.x, p.height-1);
     }
   
-    void steer(PVector dir)
+    void steer(float noise_val)
     {
-        vel.add(dir);
+        noise_val = noise_val * 2 - 1;
+                                       //right                      //left
+        PVector norm = noise_val > 0 ? new PVector(vel.y, -vel.x) : new PVector(-vel.y, vel.x);
+
+        norm.normalize();
+
+        norm.mult(p.abs(noise_val));
+
+        vel.mult(3);
+
+        vel.add(norm);
+
+        vel.normalize();
+        
     }
   
     void render()
