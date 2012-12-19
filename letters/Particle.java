@@ -54,12 +54,9 @@ public class Particle
   
     void render()
     {
-        if(arrived)
-          p.fill(235,0,147);
-        else
-          p.fill(color);
+        p.fill(color);
           
-        p.ellipse(pos.x, pos.y, 3, 3);
+        p.ellipse(pos.x, pos.y, 1, 1);
     }
 
     PVector randVec(float min, float max)
