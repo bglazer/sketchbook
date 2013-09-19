@@ -1,5 +1,4 @@
 import processing.core.*;
-import java.nio.file.Files;
 import java.io.File;
 import java.awt.image.DataBufferFloat;
 import java.awt.image.DataBuffer;
