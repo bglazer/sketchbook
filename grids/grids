@@ -1,4 +1,0 @@
-javac -cp .:/home/bryan/dev/java/:./core.jar grids.java
-if [[ $? == 0 ]]; then
-    java -cp .:/home/bryan/dev/java/:./core.jar grids &
-fi
