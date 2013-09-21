@@ -6,10 +6,11 @@ import naybur.Point;
 
 public class grids extends PApplet {
     private int scale_x = 1024, scale_y = 700; 
-    private int num_points = 500;
+    private int num_points = 1000;
     private int nayburs = 4;
     private double[][] pos_range = { {0, scale_x}, {0, scale_y} };
     private int index = 0;
+	private int[] colors;
     OIGrid grid;
     ArrayList<Point> points;
     ArrayList<PVector> vels;
@@ -25,6 +26,11 @@ public class grids extends PApplet {
         {
             vels.add(PVector.random2D());
         }
+		colors = new int[num_points];
+		for(int i = 0; i < num_points; i++)
+		{
+			colors[i] = color(random(255), random(255), random(255));
+		}
     }
 
     public void draw()
@@ -33,14 +39,14 @@ public class grids extends PApplet {
         grid.overhaul();
         for(int i = 0; i < num_points; i++)
         {
-            Point point = grid.point_list.get(i);
-            List<Integer> results = grid.findNearest(point,nayburs);
+			Point point = points.get(i);
+            List<Point> results = grid.findNearest(point,nayburs);
             float fx = (float) point.x;
             float fy = (float) point.y;
 
-            for(Integer index : results)
+			stroke(colors[i]);
+            for(Point result : results)
             {
-                Point result = grid.point_list.get(index);
                 float rx = (float)result.x;
                 float ry = (float)result.y;
                 line(fx,fy,rx,ry);
