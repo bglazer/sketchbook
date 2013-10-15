@@ -1,3 +1,5 @@
+package sketchbook.grids;
+
 import processing.core.*;
 import naybur.grid.OIGrid;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import naybur.Point;
 public class grids extends PApplet {
     private int scale_x = 1024, scale_y = 700; 
     private int num_points = 1000;
-    private int nayburs = 4;
+    private int nayburs = 8;
     private double[][] pos_range = { {0, scale_x}, {0, scale_y} };
     private int index = 0;
 	private int[] colors;
@@ -41,24 +43,24 @@ public class grids extends PApplet {
         {
 			Point point = points.get(i);
             List<Point> results = grid.findNearest(point,nayburs);
-            float fx = (float) point.x;
-            float fy = (float) point.y;
+            float fx = (float) point.x();
+            float fy = (float) point.y();
 
 			stroke(colors[i]);
             for(Point result : results)
             {
-                float rx = (float)result.x;
-                float ry = (float)result.y;
+                float rx = (float)result.x();
+                float ry = (float)result.y();
                 line(fx,fy,rx,ry);
             }
             
             PVector vel = vels.get(i);
-            if(point.x + vel.x >= width || point.x + vel.x <= 0)
+            if(point.x() + vel.x >= width || point.x() + vel.x <= 0)
                 vel.x = -vel.x;
-            if(point.y + vel.y >= height || point.y + vel.y <= 0) 
+            if(point.y() + vel.y >= height || point.y() + vel.y <= 0) 
                 vel.y = -vel.y;
-            point.x += vel.x; 
-            point.y += vel.y;
+            point.x(point.x() + vel.x); 
+            point.y(point.y() + vel.y);
         }
     }
     
@@ -97,6 +99,6 @@ public class grids extends PApplet {
 
     public static void main(String args[])
     {
-        PApplet.main(new String[] {"grids"});
+        PApplet.main(new String[] {"sketchbook.grids.grids"});
     }
 }

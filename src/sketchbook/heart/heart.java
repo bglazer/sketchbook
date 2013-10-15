@@ -1,4 +1,6 @@
+package sketchbook.heart;
 import processing.core.*;
+
 import java.util.ArrayList;
 
 public class heart extends PApplet {
@@ -21,7 +23,7 @@ public class heart extends PApplet {
       
       noStroke();
       
-      heart = loadImage("heart.png");
+      heart = loadImage("/home/bryan/git/sketchbook/src/sketchbook/heart/heart.png");
       image(heart,width/4,height/4);
       loadPixels();
     
@@ -127,6 +129,6 @@ public class heart extends PApplet {
 
     public static void main(String args[])
     {
-      PApplet.main(new String[] {"heart"});
+      PApplet.main(new String[] {"sketchbook.heart.heart"});
     }
 }

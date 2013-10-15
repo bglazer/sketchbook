@@ -1,12 +1,7 @@
+package sketchbook.letters;
+
 import processing.core.*;
-import java.io.File;
-import java.awt.image.DataBufferFloat;
-import java.awt.image.DataBuffer;
-import javax.imageio.ImageIO;
-import java.awt.image.WritableRaster; 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.io.IOException;
 
 public class letters extends PApplet {
 
@@ -48,7 +43,7 @@ public class letters extends PApplet {
 
         int[] text_map = new int[width*height];
 
-        text_map = extractBytes("b.png");
+        text_map = extractBytes("/home/bryan/git/sketchbook/src/sketchbook/letters/b.png");
 
         for(int i = 0; i < width; i++)
         {
@@ -106,7 +101,7 @@ public class letters extends PApplet {
 
     public static void main(String args[])
     {
-      PApplet.main(new String[] {"letters"});
+      PApplet.main(new String[] {"sketchbook.letters.letters"});
     }
 }
 
